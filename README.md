@@ -1,5 +1,20 @@
 # Systems Assignment
+Steps to reproduce:
+```
+cd main
+go run main.gp --url https://cf-hiree.humblef00ls.workers.dev/links --profile 100
+```
+### Flags
+``--url``*: The URL to which you want to send http requests to. Required.
+``--profile``: Number of times to send a GET request to the given URL.
+``--help``: Returns info about other flags.
 
+## Analysis
+Screenshots have been included with the results from running this Go CLI tool against major websites ( Identified by the screenshot's name) as well as my CF worker site deployed in the previous challenge (mysitebase refers to https://cf-hiree.humblef00ls.workers.dev/ and mysitelinks refers to https://cf-hiree.humblef00ls.workers.dev/links) 
+
+Firstly we see a lot of `301` codes. I have never worked with sockets before so I am not sure how to debug this. However, google.com and as well my cf website have proper responses. 
+
+One thing I noticed in the responses was that for my CF website had very fast mean and median times, but a fairly outlier of a slowest time. My guess would be that this is due to serverless cold start.
 ## What is it?
 
 This exercise is a follow-on to the [General Assignment](https://github.com/cloudflare-hiring/cloudflare-2020-general-engineering-assignment), you'll need to complete that first.  In this assignment you'll write a program that makes a request to the endpoints you created in the General Assignment.  This is a systems assignment so we want to see that you're able to use sockets directly rather than using a library that handles the HTTP request.
